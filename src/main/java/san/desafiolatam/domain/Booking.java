@@ -1,5 +1,6 @@
 package san.desafiolatam.domain;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class Booking {
@@ -10,6 +11,7 @@ public class Booking {
     private final LocalDateTime endTime;
     private final int attendees;
 
+    //constructor
     public Booking(
             String id,
             Room room,
@@ -42,5 +44,21 @@ public class Booking {
 
     public int getAttendees() {
         return attendees;
+    }
+
+    //verifica si la reserva se superpone con otro intervalo dado
+    public boolean overlaps(
+            LocalDateTime otherStart,
+            LocalDateTime otherEnd
+    ) {
+        return startTime.isBefore(otherEnd) && endTime.isAfter(otherStart);
+    }
+
+    public boolean isForRoom(String roomId) {
+        return room.getId().equals(roomId);
+    }
+
+    public long durationInMinutes() {
+        return Duration.between(startTime, endTime).toMinutes();
     }
 }
