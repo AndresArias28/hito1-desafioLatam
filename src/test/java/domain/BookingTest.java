@@ -46,15 +46,14 @@ public class BookingTest {
 
         // Assert
         assertEquals("B1", booking.getId());
-        assertSame(room, booking.getRoom()); //comparacion de todo el objeto romm
-                     //valor esperado, valor real
-        assertEquals(startTime, booking.getStartTime()); //Comprueba que el horario de inicio de esta reserva sea exactamente el que esperamos
+        assertSame(room, booking.getRoom()); // Verifies that both references point to the same room.
+        assertEquals(startTime, booking.getStartTime());
         assertEquals(endTime, booking.getEndTime());
         assertEquals(5, booking.getAttendees());
     }
 
     @ParameterizedTest
-    @MethodSource("overlapCases") //de donde obtiene los datos
+    @MethodSource("overlapCases") // Provides the parameterized test data.
     void shouldDetectOverlappingPeriods(
             LocalDateTime otherStart,
             LocalDateTime otherEnd,

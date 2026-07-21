@@ -11,7 +11,6 @@ public class Booking {
     private final LocalDateTime endTime;
     private final int attendees;
 
-    //constructor
     public Booking(
             String id,
             Room room,
@@ -46,7 +45,7 @@ public class Booking {
         return attendees;
     }
 
-    //verifica si la reserva se superpone con otro intervalo dado
+    // Checks whether this booking overlaps the given time range.
     public boolean overlaps(
             LocalDateTime otherStart,
             LocalDateTime otherEnd

@@ -31,7 +31,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Mockito integrado con JUnit 5 -->
+        <!-- Mockito integration for JUnit 5 -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
@@ -44,7 +44,7 @@
     <build>
         <plugins>
 
-            <!-- Compilación con Java 25 -->
+            <!-- Compiles the project with Java 25 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -54,7 +54,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Copia Mockito para utilizarlo como agente -->
+            <!-- Copies Mockito for use as a Java agent -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -90,7 +90,7 @@
                 </executions>
             </plugin>
 
-            <!-- Ejecuta las pruebas unitarias -->
+            <!-- Runs the unit tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -104,7 +104,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Genera el reporte de cobertura -->
+            <!-- Generates the coverage report -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
