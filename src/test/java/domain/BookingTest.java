@@ -136,6 +136,22 @@ public class BookingTest {
     }
 
     @Test
+    void shouldReturnFalseWhenBookingDoesNotBelongToRoom() {
+        // Arrange
+        Room room = new Room("R1", "Meeting Room", 10, true);
+        Booking booking = new Booking(
+                "B1",
+                room,
+                LocalDateTime.of(2026, 8, 10, 9, 0),
+                LocalDateTime.of(2026, 8, 10, 10, 0),
+                5
+        );
+
+        // Act / Assert
+        assertEquals(false, booking.isForRoom("R2"));
+    }
+
+    @Test
     void shouldCalculateBookingDurationInMinutes() {
         // Arrange
         Room room = new Room("R1", "Meeting Room", 10, true);

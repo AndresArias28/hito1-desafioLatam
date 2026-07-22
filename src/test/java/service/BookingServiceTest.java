@@ -27,6 +27,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 @ExtendWith(MockitoExtension.class)
 class BookingServiceTest {
@@ -104,7 +105,7 @@ class BookingServiceTest {
                 exception.getMessage()
         );
 
-        verify(bookingRepository, never()).save(any());
+        verifyNoInteractions(bookingRepository);
     }
 
     @ParameterizedTest
@@ -187,6 +188,7 @@ class BookingServiceTest {
                 endTime
         );
         verify(bookingRepository).save(booking);
+        verifyNoMoreInteractions(bookingRepository);
     }
 
     @Test
@@ -216,5 +218,6 @@ class BookingServiceTest {
                 endTime
         );
         verify(bookingRepository, never()).save(any());
+        verifyNoMoreInteractions(bookingRepository);
     }
 }
