@@ -1,4 +1,4 @@
-package san.desafiolatam.domain.model.booking;
+package san.desafiolatam.domain.valueobject;
 
 public record BookingId(String value) {
 

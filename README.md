@@ -9,9 +9,8 @@ The project follows a Clean Architecture / Ports and Adapters approach with Doma
 ```text
 san.desafiolatam
 ├── domain                    (inner layer: pure Java, no framework imports or annotations)
-│   ├── model
-│   │   ├── room              (Room aggregate root; RoomId, RoomName, Capacity value objects)
-│   │   └── booking           (Booking aggregate root; BookingId, BookingPeriod, Attendees value objects)
+│   ├── entity                (Room and Booking aggregate roots)
+│   ├── valueobject           (RoomId, RoomName, Capacity, BookingId, BookingPeriod, Attendees)
 │   ├── repository            (storage ports: BookingRepository, RoomRepository)
 │   └── exception             (business exceptions)
 ├── application
@@ -26,6 +25,8 @@ san.desafiolatam
 - **Domain**: contains the business core. It has zero dependencies on frameworks or on the outer layers.
 - **Application**: orchestrates use cases. `CreateBookingUseCase` depends exclusively on the domain repository ports, injected through its constructor.
 - **Infrastructure**: provides framework-free adapters that implement the domain ports (in-memory persistence).
+
+Dependencies point inward only: `infrastructure` may depend on `application` and `domain`; `application` may depend on `domain`; `domain` never depends on the outer layers. The domain and application layers contain no Spring, JPA, Jackson, or other framework annotations/imports.
 
 ### Tactical Patterns
 
@@ -46,8 +47,10 @@ san.desafiolatam
 
 - `Room.canAccommodate(Attendees attendees)`
 - `Room.ensureCanAccommodate(Attendees attendees)`
+- `Room.id()`, `Room.name()`, `Room.capacity()`
 - `Booking.overlaps(BookingPeriod otherPeriod)`
 - `Booking.isForRoom(RoomId roomId)`
+- `Booking.id()`, `Booking.roomId()`, `Booking.period()`, `Booking.attendees()`
 - `BookingPeriod.overlaps(BookingPeriod other)`
 - `BookingPeriod.durationInMinutes()`
 - `CreateBookingUseCase.execute(RoomId roomId, BookingPeriod period, Attendees attendees)`
@@ -65,12 +68,13 @@ san.desafiolatam
 From the project root, run:
 
 ```bash
-mvn clean test
+mvn clean compile
+mvn test
 ```
 
 ## Generate the Coverage Report
 
-Run:
+Run the full verification, including the test suite:
 
 ```bash
 mvn verify

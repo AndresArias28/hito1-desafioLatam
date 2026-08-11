@@ -3,12 +3,12 @@ package san.desafiolatam.application.usecase;
 import san.desafiolatam.domain.exception.InactiveRoomException;
 import san.desafiolatam.domain.exception.RoomNotFoundException;
 import san.desafiolatam.domain.exception.RoomUnavailableException;
-import san.desafiolatam.domain.model.booking.Attendees;
-import san.desafiolatam.domain.model.booking.Booking;
-import san.desafiolatam.domain.model.booking.BookingId;
-import san.desafiolatam.domain.model.booking.BookingPeriod;
-import san.desafiolatam.domain.model.room.Room;
-import san.desafiolatam.domain.model.room.RoomId;
+import san.desafiolatam.domain.entity.Booking;
+import san.desafiolatam.domain.entity.Room;
+import san.desafiolatam.domain.valueobject.Attendees;
+import san.desafiolatam.domain.valueobject.BookingId;
+import san.desafiolatam.domain.valueobject.BookingPeriod;
+import san.desafiolatam.domain.valueobject.RoomId;
 import san.desafiolatam.domain.repository.BookingRepository;
 import san.desafiolatam.domain.repository.RoomRepository;
 

@@ -1,7 +1,7 @@
 package san.desafiolatam.domain.repository;
 
-import san.desafiolatam.domain.model.room.Room;
-import san.desafiolatam.domain.model.room.RoomId;
+import san.desafiolatam.domain.entity.Room;
+import san.desafiolatam.domain.valueobject.RoomId;
 
 import java.util.Optional;
 

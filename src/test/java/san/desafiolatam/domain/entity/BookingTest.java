@@ -1,7 +1,10 @@
-package san.desafiolatam.domain.model.booking;
+package san.desafiolatam.domain.entity;
 
 import org.junit.jupiter.api.Test;
-import san.desafiolatam.domain.model.room.RoomId;
+import san.desafiolatam.domain.valueobject.Attendees;
+import san.desafiolatam.domain.valueobject.BookingId;
+import san.desafiolatam.domain.valueobject.BookingPeriod;
+import san.desafiolatam.domain.valueobject.RoomId;
 
 import java.time.LocalDateTime;
 
@@ -31,10 +34,10 @@ class BookingTest {
         Booking booking = createBooking();
 
         // Assert
-        assertEquals(BOOKING_ID, booking.getId());
-        assertEquals(ROOM_ID, booking.getRoomId());
-        assertEquals(PERIOD, booking.getPeriod());
-        assertEquals(ATTENDEES, booking.getAttendees());
+        assertEquals(BOOKING_ID, booking.id());
+        assertEquals(ROOM_ID, booking.roomId());
+        assertEquals(PERIOD, booking.period());
+        assertEquals(ATTENDEES, booking.attendees());
     }
 
     @Test

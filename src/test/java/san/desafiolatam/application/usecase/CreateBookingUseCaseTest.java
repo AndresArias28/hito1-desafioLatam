@@ -11,13 +11,13 @@ import san.desafiolatam.domain.exception.InactiveRoomException;
 import san.desafiolatam.domain.exception.InvalidAttendeesException;
 import san.desafiolatam.domain.exception.RoomNotFoundException;
 import san.desafiolatam.domain.exception.RoomUnavailableException;
-import san.desafiolatam.domain.model.booking.Attendees;
-import san.desafiolatam.domain.model.booking.Booking;
-import san.desafiolatam.domain.model.booking.BookingPeriod;
-import san.desafiolatam.domain.model.room.Capacity;
-import san.desafiolatam.domain.model.room.Room;
-import san.desafiolatam.domain.model.room.RoomId;
-import san.desafiolatam.domain.model.room.RoomName;
+import san.desafiolatam.domain.entity.Booking;
+import san.desafiolatam.domain.entity.Room;
+import san.desafiolatam.domain.valueobject.Attendees;
+import san.desafiolatam.domain.valueobject.BookingPeriod;
+import san.desafiolatam.domain.valueobject.Capacity;
+import san.desafiolatam.domain.valueobject.RoomId;
+import san.desafiolatam.domain.valueobject.RoomName;
 import san.desafiolatam.domain.repository.BookingRepository;
 import san.desafiolatam.domain.repository.RoomRepository;
 
@@ -184,10 +184,10 @@ class CreateBookingUseCaseTest {
         Booking booking = useCase.execute(roomId, period, attendees);
 
         // Assert
-        assertNotNull(booking.getId());
-        assertEquals(roomId, booking.getRoomId());
-        assertEquals(period, booking.getPeriod());
-        assertEquals(attendees, booking.getAttendees());
+        assertNotNull(booking.id());
+        assertEquals(roomId, booking.roomId());
+        assertEquals(period, booking.period());
+        assertEquals(attendees, booking.attendees());
         verify(bookingRepository).existsOverlappingBooking(roomId, period);
         verify(bookingRepository).save(booking);
         verifyNoMoreInteractions(bookingRepository);

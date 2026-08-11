@@ -1,10 +1,13 @@
-package san.desafiolatam.domain.model.room;
+package san.desafiolatam.domain.entity;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import san.desafiolatam.domain.exception.InvalidAttendeesException;
-import san.desafiolatam.domain.model.booking.Attendees;
+import san.desafiolatam.domain.valueobject.Attendees;
+import san.desafiolatam.domain.valueobject.Capacity;
+import san.desafiolatam.domain.valueobject.RoomId;
+import san.desafiolatam.domain.valueobject.RoomName;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,9 +32,9 @@ class RoomTest {
         Room room = createRoom();
 
         // Assert
-        assertEquals(new RoomId("R1"), room.getId());
-        assertEquals(new RoomName("Meeting Room"), room.getName());
-        assertEquals(new Capacity(10), room.getCapacity());
+        assertEquals(new RoomId("R1"), room.id());
+        assertEquals(new RoomName("Meeting Room"), room.name());
+        assertEquals(new Capacity(10), room.capacity());
         assertTrue(room.isActive());
     }
 

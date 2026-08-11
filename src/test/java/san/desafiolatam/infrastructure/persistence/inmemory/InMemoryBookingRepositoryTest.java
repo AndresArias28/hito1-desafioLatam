@@ -1,11 +1,11 @@
 package san.desafiolatam.infrastructure.persistence.inmemory;
 
 import org.junit.jupiter.api.Test;
-import san.desafiolatam.domain.model.booking.Attendees;
-import san.desafiolatam.domain.model.booking.Booking;
-import san.desafiolatam.domain.model.booking.BookingId;
-import san.desafiolatam.domain.model.booking.BookingPeriod;
-import san.desafiolatam.domain.model.room.RoomId;
+import san.desafiolatam.domain.entity.Booking;
+import san.desafiolatam.domain.valueobject.Attendees;
+import san.desafiolatam.domain.valueobject.BookingId;
+import san.desafiolatam.domain.valueobject.BookingPeriod;
+import san.desafiolatam.domain.valueobject.RoomId;
 
 import java.time.LocalDateTime;
 

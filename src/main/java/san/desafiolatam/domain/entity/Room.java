@@ -1,7 +1,10 @@
-package san.desafiolatam.domain.model.room;
+package san.desafiolatam.domain.entity;
 
 import san.desafiolatam.domain.exception.InvalidAttendeesException;
-import san.desafiolatam.domain.model.booking.Attendees;
+import san.desafiolatam.domain.valueobject.Attendees;
+import san.desafiolatam.domain.valueobject.Capacity;
+import san.desafiolatam.domain.valueobject.RoomId;
+import san.desafiolatam.domain.valueobject.RoomName;
 
 import java.util.Objects;
 
@@ -43,15 +46,15 @@ public class Room {
         }
     }
 
-    public RoomId getId() {
+    public RoomId id() {
         return id;
     }
 
-    public RoomName getName() {
+    public RoomName name() {
         return name;
     }
 
-    public Capacity getCapacity() {
+    public Capacity capacity() {
         return capacity;
     }
 

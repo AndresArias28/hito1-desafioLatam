@@ -1,7 +1,7 @@
 package san.desafiolatam.infrastructure.persistence.inmemory;
 
-import san.desafiolatam.domain.model.room.Room;
-import san.desafiolatam.domain.model.room.RoomId;
+import san.desafiolatam.domain.entity.Room;
+import san.desafiolatam.domain.valueobject.RoomId;
 import san.desafiolatam.domain.repository.RoomRepository;
 
 import java.util.Map;
@@ -20,7 +20,7 @@ public class InMemoryRoomRepository implements RoomRepository {
 
     @Override
     public Room save(Room room) {
-        rooms.put(room.getId(), room);
+        rooms.put(room.id(), room);
         return room;
     }
 }

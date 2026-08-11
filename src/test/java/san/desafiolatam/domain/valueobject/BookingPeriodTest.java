@@ -1,4 +1,4 @@
-package san.desafiolatam.domain.model.booking;
+package san.desafiolatam.domain.valueobject;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

@@ -1,6 +1,9 @@
-package san.desafiolatam.domain.model.booking;
+package san.desafiolatam.domain.entity;
 
-import san.desafiolatam.domain.model.room.RoomId;
+import san.desafiolatam.domain.valueobject.Attendees;
+import san.desafiolatam.domain.valueobject.BookingId;
+import san.desafiolatam.domain.valueobject.BookingPeriod;
+import san.desafiolatam.domain.valueobject.RoomId;
 
 import java.util.Objects;
 
@@ -37,19 +40,19 @@ public class Booking {
         );
     }
 
-    public BookingId getId() {
+    public BookingId id() {
         return id;
     }
 
-    public RoomId getRoomId() {
+    public RoomId roomId() {
         return roomId;
     }
 
-    public BookingPeriod getPeriod() {
+    public BookingPeriod period() {
         return period;
     }
 
-    public Attendees getAttendees() {
+    public Attendees attendees() {
         return attendees;
     }
 

@@ -1,4 +1,4 @@
-package san.desafiolatam.domain.model.booking;
+package san.desafiolatam.domain.valueobject;
 
 import san.desafiolatam.domain.exception.InvalidAttendeesException;
 

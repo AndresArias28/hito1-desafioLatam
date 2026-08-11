@@ -1,4 +1,4 @@
-package san.desafiolatam.domain.model.room;
+package san.desafiolatam.domain.valueobject;
 
 public record Capacity(int value) {
 

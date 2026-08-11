@@ -1,8 +1,8 @@
 package san.desafiolatam.infrastructure.persistence.inmemory;
 
-import san.desafiolatam.domain.model.booking.Booking;
-import san.desafiolatam.domain.model.booking.BookingPeriod;
-import san.desafiolatam.domain.model.room.RoomId;
+import san.desafiolatam.domain.entity.Booking;
+import san.desafiolatam.domain.valueobject.BookingPeriod;
+import san.desafiolatam.domain.valueobject.RoomId;
 import san.desafiolatam.domain.repository.BookingRepository;
 
 import java.util.List;

@@ -1,10 +1,10 @@
 package san.desafiolatam.infrastructure.persistence.inmemory;
 
 import org.junit.jupiter.api.Test;
-import san.desafiolatam.domain.model.room.Capacity;
-import san.desafiolatam.domain.model.room.Room;
-import san.desafiolatam.domain.model.room.RoomId;
-import san.desafiolatam.domain.model.room.RoomName;
+import san.desafiolatam.domain.entity.Room;
+import san.desafiolatam.domain.valueobject.Capacity;
+import san.desafiolatam.domain.valueobject.RoomId;
+import san.desafiolatam.domain.valueobject.RoomName;
 
 import java.util.Optional;
 
