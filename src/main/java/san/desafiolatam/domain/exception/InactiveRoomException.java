@@ -1,4 +1,4 @@
-package san.desafiolatam.exception;
+package san.desafiolatam.domain.exception;
 
 public class InactiveRoomException extends RuntimeException {
     public InactiveRoomException(String message) {

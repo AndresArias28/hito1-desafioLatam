@@ -4,14 +4,35 @@ Business core for managing meeting-room reservations. The system validates room 
 
 ## Architecture
 
-The project follows a Clean Architecture / Ports and Adapters approach:
+The project follows a Clean Architecture / Ports and Adapters approach with Domain-Driven Design tactical patterns, organized in three strictly separated layers:
 
-- `domain`: pure Java entities (`Room` and `Booking`) and their business rules.
-- `service`: the `BookingService` use case, which coordinates validation and booking creation.
-- `repository`: the `BookingRepository` port, which defines the contract required by the service.
-- `exception`: specific business exceptions.
+```text
+san.desafiolatam
+├── domain                    (inner layer: pure Java, no framework imports or annotations)
+│   ├── model
+│   │   ├── room              (Room aggregate root; RoomId, RoomName, Capacity value objects)
+│   │   └── booking           (Booking aggregate root; BookingId, BookingPeriod, Attendees value objects)
+│   ├── repository            (storage ports: BookingRepository, RoomRepository)
+│   └── exception             (business exceptions)
+├── application
+│   └── usecase               (CreateBookingUseCase)
+└── infrastructure
+    └── persistence
+        └── inmemory          (InMemoryRoomRepository, InMemoryBookingRepository adapters)
+```
 
-The core does not use frameworks, a database, or in-memory repositories. During tests, the `BookingRepository` port is isolated with Mockito.
+### Layer Rules
+
+- **Domain**: contains the business core. It has zero dependencies on frameworks or on the outer layers.
+- **Application**: orchestrates use cases. `CreateBookingUseCase` depends exclusively on the domain repository ports, injected through its constructor.
+- **Infrastructure**: provides framework-free adapters that implement the domain ports (in-memory persistence).
+
+### Tactical Patterns
+
+- **Entities with unique identity**: `Room` and `Booking` are aggregate roots; their `equals`/`hashCode` are based solely on their identity (`RoomId` / `BookingId`).
+- **Self-validating Value Objects** (`record`): `RoomId`, `RoomName`, `Capacity`, `BookingId`, `BookingPeriod`, and `Attendees` enforce their invariants in their compact constructors.
+- **Aggregates**: `Booking` references the `Room` aggregate by identity (`RoomId`), never by entity instance.
+- **Repository contracts**: pure interfaces living inside the domain (`domain.repository`) act as storage boundaries; infrastructure implements them.
 
 ## Business Rules
 
@@ -23,11 +44,13 @@ The core does not use frameworks, a database, or in-memory repositories. During 
 
 ## Main Methods
 
-- `Room.canAccommodate(int attendees)`
-- `Booking.overlaps(LocalDateTime otherStart, LocalDateTime otherEnd)`
-- `Booking.isForRoom(String roomId)`
-- `Booking.durationInMinutes()`
-- `BookingService.createBooking(...)`
+- `Room.canAccommodate(Attendees attendees)`
+- `Room.ensureCanAccommodate(Attendees attendees)`
+- `Booking.overlaps(BookingPeriod otherPeriod)`
+- `Booking.isForRoom(RoomId roomId)`
+- `BookingPeriod.overlaps(BookingPeriod other)`
+- `BookingPeriod.durationInMinutes()`
+- `CreateBookingUseCase.execute(RoomId roomId, BookingPeriod period, Attendees attendees)`
 
 ## Technologies
 
